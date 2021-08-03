@@ -10,8 +10,8 @@ const Main = ({ activeNote, onUpdateNote }) => {
         })
     };
 
-// Default Display...
-    if(!activeNote) return <div className="no-active-note">No note selected</div>
+    // Default Display...
+    if (!activeNote) return <div className="no-active-note">No note selected. Please click <b>Add+</b> to create one</div>
 
 
     return (
@@ -20,6 +20,7 @@ const Main = ({ activeNote, onUpdateNote }) => {
             <div className="app-main-note-edit">
 
                 <input
+                    className="Inputs"
                     type="text"
                     name="" id="title"
                     value={activeNote.title}
@@ -27,10 +28,12 @@ const Main = ({ activeNote, onUpdateNote }) => {
                     autoFocus />
 
                 <textarea
+                    className="Inputs2"
                     id="body"
                     placeholder="Write you note here..."
                     value={activeNote.body}
-                    onChange={(e) => onEditField("body", e.target.value)} />
+                    onChange={(e) => onEditField("body", e.target.value)}>
+                </textarea>
 
             </div>
             {/* Body live preview.. */}
