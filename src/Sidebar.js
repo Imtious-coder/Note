@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = ({ notes, onAddNote }) => {
+const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) => {
     return (
         <div className="app-sidebar">
             <div className="app-sidebar-header">
@@ -12,16 +12,21 @@ const Sidebar = ({ notes, onAddNote }) => {
 
                 {
                     notes.map((note) => (
-                        <div className="app-sidebar-note">
+                        <div className={`app-sidebar-note ${note.id === activeNote && "active"}`} onClick={() => setActiveNote(note.id)}>
                             {/* Note title and button */}
                             <div className="sidebar-note-title">
-                                <strong>TTITLE</strong>
-                                <button>Delete</button>
+                                <strong>{note.title}</strong>
+                                <button onClick={() => onDeleteNote(note.id)}>Delete</button>
                             </div>
-                            {/* Prview */}
-                            <p>Note preview</p>
+                            {/* Note Perview */}
+                            <p>{note.body && note.body.substr(0, 100) + "..."}</p>
                             <small className="note-meta">
-                                Last modified [date]
+                                Last Modified{" "}
+                                {new Date(note.lastModified).toLocaleDateString("en-GB", {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                })}
+
                             </small>
                         </div>
                     ))
