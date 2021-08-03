@@ -1,15 +1,22 @@
 import React from 'react';
 
-const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) => {
+const Sidebar = ({ 
+    notes,
+    onAddNote,
+    onDeleteNote,
+    activeNote,
+    setActiveNote
+}) => {
+
     return (
         <div className="app-sidebar">
+            {/* Heading */}
             <div className="app-sidebar-header">
                 <h1>Notes</h1>
                 <button onClick={onAddNote}>Add</button>
             </div>
             {/* Notes */}
             <div className="app-sidebar-notes">
-
                 {
                     notes.map((note) => (
                         <div className={`app-sidebar-note ${note.id === activeNote && "active"}`} onClick={() => setActiveNote(note.id)}>
@@ -18,7 +25,7 @@ const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) 
                                 <strong>{note.title}</strong>
                                 <button onClick={() => onDeleteNote(note.id)}>Delete</button>
                             </div>
-                            {/* Note Perview */}
+                            {/* Note Perview (...Getting the first 100 letter only...) */}
                             <p>{note.body && note.body.substr(0, 100) + "..."}</p>
                             <small className="note-meta">
                                 Last Modified{" "}
@@ -26,12 +33,10 @@ const Sidebar = ({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) 
                                     hour: "2-digit",
                                     minute: "2-digit",
                                 })}
-
                             </small>
                         </div>
                     ))
                 }
-
             </div>
         </div >
     );

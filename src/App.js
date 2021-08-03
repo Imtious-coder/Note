@@ -5,11 +5,11 @@ import Main from './Main';
 import Sidebar from './Sidebar';
 
 function App() {
-  // State..
+  // States...
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
 
-  // Event handler...
+  // Add note handler
   const onAddNote = () => {
     const newNote = {
       id: uuid(),
@@ -20,6 +20,7 @@ function App() {
     setNotes([newNote, ...notes]);
   };
 
+  // Note update handler
   const onUpdateNote = (updatedNote) => {
     const updateNotesArray = notes.map((note) => {
       if (note.id === activeNote) {
@@ -30,16 +31,19 @@ function App() {
     setNotes(updateNotesArray);
   };
 
+  // Note delete handler
   const onDeleteNote = (idToDelete) => {
     setNotes(notes.filter((note) => note.id !== idToDelete))
   }
 
+  // Active note getting handler
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote);
   }
 
   return (
     <div className="App">
+      {/* left sidebar */}
       <Sidebar
         notes={notes}
         onAddNote={onAddNote}
@@ -47,6 +51,7 @@ function App() {
         activeNote={activeNote}
         setActiveNote={setActiveNote}
       />
+      {/* Main body */}
       <Main
         activeNote={getActiveNote()}
         onUpdateNote={onUpdateNote}
