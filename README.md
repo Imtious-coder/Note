@@ -2,7 +2,7 @@
 
 #### Live Link(https://modest-wing-03846e.netlify.app)
 
-<a  href="https://modest-wing-03846e.netlify.app)"><img  width="100%"  height="100%"  src="./src/images.png"></a>
+<a  href="https://modest-wing-03846e.netlify.app"><img  width="100%"  height="100%"  src="./src/images.png"></a>
 
 ## A note taking app by JavaScript. Simply click on the "Add+" button to create a note and start editing.
 
